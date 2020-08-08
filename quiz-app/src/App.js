@@ -5,7 +5,7 @@ import WholeGrid from './Components/wholegrid';
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    margin: '100px 0px auto',
+    margin: 'auto',
     display: 'flex',
     justifyContent: 'center',
   },

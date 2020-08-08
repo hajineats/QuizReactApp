@@ -7,28 +7,25 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme)=>({
     paper: {
-        maxWidth: 400,
-        margin: `8px auto`,
+        maxWidth: 500,
+        margin: '8px auto',
         padding: theme.spacing(2),
     },
 }));
 
-
 export default function Questionaire(props){
     const classes = useStyles();
     return (
-      <div className>
         <Paper className={classes.paper}>
           <Grid container wrap="nowrap" spacing={2}>
             <Grid item>
-              <Avatar>{props.question.avatar}</Avatar>
+              <Avatar>hello</Avatar>
             </Grid>
             <Grid item xs>
               <Typography>{props.question.question}</Typography>
             </Grid>
           </Grid>
         </Paper>
-      </div>
     );
 }
 

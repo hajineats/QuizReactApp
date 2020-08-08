@@ -4,9 +4,8 @@ import { Button } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     choice: {
-      maxWidth: 200,
       margin: `10px auto`,
-      padding: theme.spacing(2),
+      padding: '5px',
     }
 }));
 
