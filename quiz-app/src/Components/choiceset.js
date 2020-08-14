@@ -4,9 +4,9 @@ import Choice from './choice';
 
 export default function ChoiceSet(props){
   const correct = (<Choice option={props.question.correct_answer} true={1} />);
-  const incor1 = (<Choice option={props.question.incorrect_answers[0]} true={0} />);
-  const incor2 = (<Choice option={props.question.incorrect_answers[1]} true={0} />);
-  const incor3 = (<Choice option={props.question.incorrect_answers[2]} true={0} />);
+  const incor1 = (<Choice option={props.question.incorrect_answer[0]} true={0} />);
+  const incor2 = (<Choice option={props.question.incorrect_answer[1]} true={0} />);
+  const incor3 = (<Choice option={props.question.incorrect_answer[2]} true={0} />);
 
   var arr = [correct, incor1, incor2,incor3];
   console.log();
