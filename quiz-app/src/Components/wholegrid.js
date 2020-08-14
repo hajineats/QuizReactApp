@@ -3,6 +3,7 @@ import ChoiceSet from './choiceset';
 import Questionaire from './question';
 import { makeStyles } from '@material-ui/core';
 import * as firebase from 'firebase';
+import LandingPage from './home'
 
 var config = {
   apiKey: "AIzaSyB0iOuIDIEb9IWUGXoFyddkMfnQTZjQDTg",
@@ -26,37 +27,32 @@ export default function WholeGrid(){
   const classes = useStyles();
   const [questions, setQuestions] = useState([]);
   const rootRef = firebase.database()
-  
-  function nextPage(){
-
-  }
-
+  const [count, setCount] = useState(0);
+  const [homepage, setHomepage] = useState(true);
 
   useEffect(()=>{
-    var array=[]
     var query = rootRef.ref('/sample');
     query.once('value').then(function(snapshot){
       snapshot.forEach(function(childsnapshot){
-        console.log((childsnapshot.val().results))
-        array = childsnapshot.val().results
         setQuestions(childsnapshot.val().results)
       })
     })
   },[])
 
-  return (
-    (questions.length>0)?(
-    <div>
-      <Questionaire question={questions[0]} />
-      <ChoiceSet className={classes.choicegrid} question={questions[0]} />
-    </div>
-    ):(
-    <div>
-      <h2>pls standby</h2>
-      <button onClick={() => nextPage()}>
-        Click me
-      </button>
-    </div>
-      )
-  );
+  return (    
+    (homepage)?(<div><LandingPage a={setHomepage} /></div>):(
+      (questions.length>0)?(
+        <div>
+          <Questionaire question={questions[count]} />
+          <ChoiceSet length={questions.length} className={classes.choicegrid} question={questions[count]} />
+          <button onClick={()=>setCount((count<questions.length-1)?(count+1):(count))}>
+            See next question
+          </button>
+        </div>
+      ):(
+        <div>
+          <h2>Now Loading...</h2>
+        </div>
+        )
+    ))
 }

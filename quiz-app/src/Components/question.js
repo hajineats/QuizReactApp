@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
+import logo from './unnamed.png'
 
 const useStyles = makeStyles((theme)=>({
     paper: {
@@ -19,7 +20,7 @@ export default function Questionaire(props){
         <Paper className={classes.paper}>
           <Grid container wrap="nowrap" spacing={2}>
             <Grid item>
-              <Avatar>hello</Avatar>
+              <Avatar src={logo} className={classes.large} />
             </Grid>
             <Grid item xs>
               <Typography>{props.question.question}</Typography>

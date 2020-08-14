@@ -18,8 +18,10 @@ const useStyles = makeStyles((theme) => ({
 function Choice(props){
     const classes = useStyles();
     const [open, setOpen] = useState(false);
+    const [anyButtonClicked, setAnyButtonClicked] = useState(false);
     const handleClick = ()=>{
         setOpen(true);
+        setAnyButtonClicked(true);
     };
 
     const handleClose = (event, reason) => {
@@ -35,11 +37,14 @@ function Choice(props){
             <Button 
                 onClick={handleClick}
                 variant="contained"
-                // style={{
-                //     borderRadius: 5,
-                //     backgroundColor: (props.true===1)?"blue":"crimson",
-                //     fontSize: "8px"
-                // }}
+                style={{
+                    borderRadius: 5,
+                    backgroundColor: (anyButtonClicked)?((props.true===1)?"blue":"crimson"):"white",
+                    // (props.true===1 && anyButtonClicked)?"blue":"crimson",
+                    fontSize: "8px",
+                    textTransform: 'none',
+                    width:"80%"
+                }}
             >{props.option}</Button>
             <Snackbar
                 anchorOrigin={{
@@ -50,6 +55,7 @@ function Choice(props){
                 message={(props.true===1)?"You are correct!":"nah"}
                 action={
                     <React.Fragment>
+                      <button>hello</button>
                       <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
                         <CloseIcon fontSize="small" />
                       </IconButton>
